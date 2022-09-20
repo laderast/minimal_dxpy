@@ -3,6 +3,7 @@ name: minimal-dxpy
 channels:
   - conda-forge
 dependencies:
+  - jq
   - python
   - pip:
     - dxpy
