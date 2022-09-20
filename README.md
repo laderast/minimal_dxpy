@@ -7,5 +7,5 @@
 
 The goal of minimal_dxpy is to provide a minimal shell that has the dx-toolkit installed.
 
-
+Launch the shell here: https://mybinder.org/v2/gh/laderast/minimal_dxpy/HEAD?urlpath=lab and open Terminal in the Launcher to get started. 
 
