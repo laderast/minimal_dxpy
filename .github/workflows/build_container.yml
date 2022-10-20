@@ -1,13 +1,19 @@
-name: 'Trigger-Binder-build'
-on:
-  push:
-    branches:
-      - main
+name: Test
+on: push
 
 jobs:
-  trigger-binder-build:
-    runs-on: [ubuntu-latest]
+  binder:
+    runs-on: ubuntu-latest
     steps:
-      - uses: s-weigand/trigger-mybinder-build@v1
-        with:
-          target-repo: laderast/minimal_dxpy
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: update jupyter dependencies with repo2docker
+      uses: jupyterhub/repo2docker-action@master
+      with:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        BINDER_CACHE: true
+        PUBLIC_REGISTRY_CHECK: true
